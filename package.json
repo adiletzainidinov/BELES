@@ -1,0 +1,15 @@
+{
+  "name": "olo-digital.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webp": "imagemin \"src/assets/images/*.{jpg,png}\" --plugin=webp --out-dir=src/assets/images",
+    "update-html": "replace-in-file \"\\.\\/(assets\\/images\\/[^\\\"]+)\\.(jpg|png)\" \"\\1.webp\" \"src/**/*.html\"",
+    "optimize": "npm run webp && npm run update-html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
