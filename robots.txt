@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /sitemap.xml
+Host: olo-digital.com
+Sitemap: https://olo-digital.com/sitemap.xml
