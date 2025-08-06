@@ -27,7 +27,7 @@
 
 	// preloader - start
 	// --------------------------------------------------
-	$(window).on('load', function () {
+	$(window).on('DOMContentLoaded', function () {
 		$('#preloader').fadeOut('slow', function () {
 			$(this).remove()
 		})
