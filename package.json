@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "webp": "imagemin \"src/assets/images/*.{jpg,png}\" --plugin=webp --out-dir=src/assets/images",
-    "update-html": "replace-in-file \"\\.\\/(assets\\/images\\/[^\\\"]+)\\.(jpg|png)\" \"\\1.webp\" \"src/**/*.html\"",
-    "optimize": "npm run webp && npm run update-html"
+    "to-webp": "npx imagemin \"assets/images/**/*.{jpg,png}\" --plugin=webp --out-dir=assets/images",
+    "fix-paths": "npx replace-in-file \"(['\\\"]?)(?:\\.\\/)?assets/images\\/(.+?)\\.(jpg|png)(['\\\"])\" \"$1assets/images/$2.webp$4\" \"**/*.{html,css,js}\"",
+    "clean-src": "npx del-cli \"assets/images/**/*.jpg\" \"assets/images/**/*.png\"",
+    "optimize": "npm run to-webp && npm run fix-paths && npm run clean-src"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "del-cli": "^6.0.0",
+    "imagemin-cli": "^8.0.0",
+    "imagemin-webp": "^8.0.0",
+    "replace-in-file": "^8.3.0"
+  }
 }
